@@ -1,0 +1,62 @@
+using Oracle.ManagedDataAccess.Client;   
+using Oracle11g.Connection;              
+using System;                            
+using System.Collections.Generic;        
+using System.ComponentModel;             
+using System.Linq;                       
+using System.Text;                       
+using System.Threading.Tasks;            
+using System.Windows.Forms;              
+                                         
+namespace Oracle11g.Table                
+{                                        
+    class JOB_HISTORY : DataService<JOB_HISTORY>     
+    {                                            public JOB_HISTORY() { }               
+        public string EMPLOYEE_ID { get; set; }
+        public Nullable<DateTime> START_DATE { get; set; }
+        public Nullable<DateTime> END_DATE { get; set; }
+        public string JOB_ID { get; set; }
+        public string DEPARTMENT_ID { get; set; }
+        public Nullable<DateTime> CREATE_DATE { get; set; }
+        public Nullable<DateTime> UPDATE_DATE { get; set; }
+                                         
+        public JOB_HISTORY (string EMPLOYEE_ID
+, Nullable<DateTime> START_DATE
+, Nullable<DateTime> END_DATE
+, string JOB_ID
+, string DEPARTMENT_ID
+, Nullable<DateTime> CREATE_DATE
+, Nullable<DateTime> UPDATE_DATE
+)
+        {                                
+            this.EMPLOYEE_ID = EMPLOYEE_ID;          
+            this.START_DATE = START_DATE;          
+            this.END_DATE = END_DATE;          
+            this.JOB_ID = JOB_ID;          
+            this.DEPARTMENT_ID = DEPARTMENT_ID;          
+            this.CREATE_DATE = CREATE_DATE;          
+            this.UPDATE_DATE = UPDATE_DATE;          
+        }                                
+        public JOB_HISTORY(string[] splitresult)
+        {                                 
+            this.EMPLOYEE_ID = splitresult[0];  
+            this.START_DATE = splitresult[1];  
+            this.END_DATE = splitresult[2];  
+            this.JOB_ID = splitresult[3];  
+            this.DEPARTMENT_ID = splitresult[4];  
+            this.CREATE_DATE = splitresult[5];  
+            this.UPDATE_DATE = splitresult[6];  
+        }                                 
+        public void clear()               
+        {                                 
+            this.EMPLOYEE_ID = null;            
+            this.START_DATE = null;            
+            this.END_DATE = null;            
+            this.JOB_ID = null;            
+            this.DEPARTMENT_ID = null;            
+            this.CREATE_DATE = null;            
+            this.UPDATE_DATE = null;            
+        }                                 
+                                          
+    }                                     
+}                                         

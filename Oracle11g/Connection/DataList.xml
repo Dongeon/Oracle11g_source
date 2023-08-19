@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<SCHEMAS>
+  <SCHEMA>
+    <name>SCOTT</name>
+    <host>127.0.0.1</host>
+    <port>1521</port>
+    <id>scott</id>
+    <password>1234</password>
+	<tabledirectory>SCOTT_Table</tabledirectory>
+  </SCHEMA>
+  <!--SCHEMA>
+    <name>ora_user</name>
+    <host>127.0.0.1</host>
+    <port>1521</port>
+    <id>ora_user</id>
+    <password>dongeon</password>
+	<tabledirectory>ORA_TABLE</tabledirectory>
+  </SCHEMA-->
+</SCHEMAS>

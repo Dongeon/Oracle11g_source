@@ -1,0 +1,67 @@
+using Oracle.ManagedDataAccess.Client;   
+using Oracle11g.Connection;              
+using System;                            
+using System.Collections.Generic;        
+using System.ComponentModel;             
+using System.Linq;                       
+using System.Text;                       
+using System.Threading.Tasks;            
+using System.Windows.Forms;              
+                                         
+namespace Oracle11g.Table                
+{                                        
+    class ORDERS : DataService<ORDERS>     
+    {                                            public ORDERS() { }               
+        public string ORDER_ID { get; set; }
+        public Nullable<DateTime> ORDER_DATE { get; set; }
+        public string ORDER_MODE { get; set; }
+        public string CUSTOMER_ID { get; set; }
+        public string ORDER_STATUS { get; set; }
+        public string ORDER_TOTAL { get; set; }
+        public string SALES_REP_ID { get; set; }
+        public string PROMOTION_ID { get; set; }
+                                         
+        public ORDERS (string ORDER_ID
+, Nullable<DateTime> ORDER_DATE
+, string ORDER_MODE
+, string CUSTOMER_ID
+, string ORDER_STATUS
+, string ORDER_TOTAL
+, string SALES_REP_ID
+, string PROMOTION_ID
+)
+        {                                
+            this.ORDER_ID = ORDER_ID;          
+            this.ORDER_DATE = ORDER_DATE;          
+            this.ORDER_MODE = ORDER_MODE;          
+            this.CUSTOMER_ID = CUSTOMER_ID;          
+            this.ORDER_STATUS = ORDER_STATUS;          
+            this.ORDER_TOTAL = ORDER_TOTAL;          
+            this.SALES_REP_ID = SALES_REP_ID;          
+            this.PROMOTION_ID = PROMOTION_ID;          
+        }                                
+        public ORDERS(string[] splitresult)
+        {                                 
+            this.ORDER_ID = splitresult[0];  
+            this.ORDER_DATE = splitresult[1];  
+            this.ORDER_MODE = splitresult[2];  
+            this.CUSTOMER_ID = splitresult[3];  
+            this.ORDER_STATUS = splitresult[4];  
+            this.ORDER_TOTAL = splitresult[5];  
+            this.SALES_REP_ID = splitresult[6];  
+            this.PROMOTION_ID = splitresult[7];  
+        }                                 
+        public void clear()               
+        {                                 
+            this.ORDER_ID = null;            
+            this.ORDER_DATE = null;            
+            this.ORDER_MODE = null;            
+            this.CUSTOMER_ID = null;            
+            this.ORDER_STATUS = null;            
+            this.ORDER_TOTAL = null;            
+            this.SALES_REP_ID = null;            
+            this.PROMOTION_ID = null;            
+        }                                 
+                                          
+    }                                     
+}                                         

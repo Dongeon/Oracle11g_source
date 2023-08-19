@@ -1,0 +1,147 @@
+using Oracle.ManagedDataAccess.Client;   
+using Oracle11g.Connection;              
+using System;                            
+using System.Collections.Generic;        
+using System.ComponentModel;             
+using System.Linq;                       
+using System.Text;                       
+using System.Threading.Tasks;            
+using System.Windows.Forms;              
+                                         
+namespace Oracle11g.Table                
+{                                        
+    class PRODUCTS : DataService<PRODUCTS>     
+    {                                            public PRODUCTS() { }               
+        public string PROD_ID { get; set; }
+        public string PROD_NAME { get; set; }
+        public string PROD_DESC { get; set; }
+        public string PROD_SUBCATEGORY { get; set; }
+        public string PROD_SUBCATEGORY_ID { get; set; }
+        public string PROD_SUBCATEGORY_DESC { get; set; }
+        public string PROD_CATEGORY { get; set; }
+        public string PROD_CATEGORY_ID { get; set; }
+        public string PROD_CATEGORY_DESC { get; set; }
+        public string PROD_WEIGHT_CLASS { get; set; }
+        public string PROD_UNIT_OF_MEASURE { get; set; }
+        public string PROD_PACK_SIZE { get; set; }
+        public string SUPPLIER_ID { get; set; }
+        public string PROD_STATUS { get; set; }
+        public string PROD_LIST_PRICE { get; set; }
+        public string PROD_MIN_PRICE { get; set; }
+        public string PROD_TOTAL { get; set; }
+        public string PROD_TOTAL_ID { get; set; }
+        public string PROD_SRC_ID { get; set; }
+        public Nullable<DateTime> PROD_EFF_FROM { get; set; }
+        public Nullable<DateTime> PROD_EFF_TO { get; set; }
+        public string PROD_VALID { get; set; }
+        public Nullable<DateTime> CREATE_DATE { get; set; }
+        public Nullable<DateTime> UPDATE_DATE { get; set; }
+                                         
+        public PRODUCTS (string PROD_ID
+, string PROD_NAME
+, string PROD_DESC
+, string PROD_SUBCATEGORY
+, string PROD_SUBCATEGORY_ID
+, string PROD_SUBCATEGORY_DESC
+, string PROD_CATEGORY
+, string PROD_CATEGORY_ID
+, string PROD_CATEGORY_DESC
+, string PROD_WEIGHT_CLASS
+, string PROD_UNIT_OF_MEASURE
+, string PROD_PACK_SIZE
+, string SUPPLIER_ID
+, string PROD_STATUS
+, string PROD_LIST_PRICE
+, string PROD_MIN_PRICE
+, string PROD_TOTAL
+, string PROD_TOTAL_ID
+, string PROD_SRC_ID
+, Nullable<DateTime> PROD_EFF_FROM
+, Nullable<DateTime> PROD_EFF_TO
+, string PROD_VALID
+, Nullable<DateTime> CREATE_DATE
+, Nullable<DateTime> UPDATE_DATE
+)
+        {                                
+            this.PROD_ID = PROD_ID;          
+            this.PROD_NAME = PROD_NAME;          
+            this.PROD_DESC = PROD_DESC;          
+            this.PROD_SUBCATEGORY = PROD_SUBCATEGORY;          
+            this.PROD_SUBCATEGORY_ID = PROD_SUBCATEGORY_ID;          
+            this.PROD_SUBCATEGORY_DESC = PROD_SUBCATEGORY_DESC;          
+            this.PROD_CATEGORY = PROD_CATEGORY;          
+            this.PROD_CATEGORY_ID = PROD_CATEGORY_ID;          
+            this.PROD_CATEGORY_DESC = PROD_CATEGORY_DESC;          
+            this.PROD_WEIGHT_CLASS = PROD_WEIGHT_CLASS;          
+            this.PROD_UNIT_OF_MEASURE = PROD_UNIT_OF_MEASURE;          
+            this.PROD_PACK_SIZE = PROD_PACK_SIZE;          
+            this.SUPPLIER_ID = SUPPLIER_ID;          
+            this.PROD_STATUS = PROD_STATUS;          
+            this.PROD_LIST_PRICE = PROD_LIST_PRICE;          
+            this.PROD_MIN_PRICE = PROD_MIN_PRICE;          
+            this.PROD_TOTAL = PROD_TOTAL;          
+            this.PROD_TOTAL_ID = PROD_TOTAL_ID;          
+            this.PROD_SRC_ID = PROD_SRC_ID;          
+            this.PROD_EFF_FROM = PROD_EFF_FROM;          
+            this.PROD_EFF_TO = PROD_EFF_TO;          
+            this.PROD_VALID = PROD_VALID;          
+            this.CREATE_DATE = CREATE_DATE;          
+            this.UPDATE_DATE = UPDATE_DATE;          
+        }                                
+        public PRODUCTS(string[] splitresult)
+        {                                 
+            this.PROD_ID = splitresult[0];  
+            this.PROD_NAME = splitresult[1];  
+            this.PROD_DESC = splitresult[2];  
+            this.PROD_SUBCATEGORY = splitresult[3];  
+            this.PROD_SUBCATEGORY_ID = splitresult[4];  
+            this.PROD_SUBCATEGORY_DESC = splitresult[5];  
+            this.PROD_CATEGORY = splitresult[6];  
+            this.PROD_CATEGORY_ID = splitresult[7];  
+            this.PROD_CATEGORY_DESC = splitresult[8];  
+            this.PROD_WEIGHT_CLASS = splitresult[9];  
+            this.PROD_UNIT_OF_MEASURE = splitresult[10];  
+            this.PROD_PACK_SIZE = splitresult[11];  
+            this.SUPPLIER_ID = splitresult[12];  
+            this.PROD_STATUS = splitresult[13];  
+            this.PROD_LIST_PRICE = splitresult[14];  
+            this.PROD_MIN_PRICE = splitresult[15];  
+            this.PROD_TOTAL = splitresult[16];  
+            this.PROD_TOTAL_ID = splitresult[17];  
+            this.PROD_SRC_ID = splitresult[18];  
+            this.PROD_EFF_FROM = splitresult[19];  
+            this.PROD_EFF_TO = splitresult[20];  
+            this.PROD_VALID = splitresult[21];  
+            this.CREATE_DATE = splitresult[22];  
+            this.UPDATE_DATE = splitresult[23];  
+        }                                 
+        public void clear()               
+        {                                 
+            this.PROD_ID = null;            
+            this.PROD_NAME = null;            
+            this.PROD_DESC = null;            
+            this.PROD_SUBCATEGORY = null;            
+            this.PROD_SUBCATEGORY_ID = null;            
+            this.PROD_SUBCATEGORY_DESC = null;            
+            this.PROD_CATEGORY = null;            
+            this.PROD_CATEGORY_ID = null;            
+            this.PROD_CATEGORY_DESC = null;            
+            this.PROD_WEIGHT_CLASS = null;            
+            this.PROD_UNIT_OF_MEASURE = null;            
+            this.PROD_PACK_SIZE = null;            
+            this.SUPPLIER_ID = null;            
+            this.PROD_STATUS = null;            
+            this.PROD_LIST_PRICE = null;            
+            this.PROD_MIN_PRICE = null;            
+            this.PROD_TOTAL = null;            
+            this.PROD_TOTAL_ID = null;            
+            this.PROD_SRC_ID = null;            
+            this.PROD_EFF_FROM = null;            
+            this.PROD_EFF_TO = null;            
+            this.PROD_VALID = null;            
+            this.CREATE_DATE = null;            
+            this.UPDATE_DATE = null;            
+        }                                 
+                                          
+    }                                     
+}                                         

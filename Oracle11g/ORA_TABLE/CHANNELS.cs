@@ -1,0 +1,77 @@
+using Oracle.ManagedDataAccess.Client;   
+using Oracle11g.Connection;              
+using System;                            
+using System.Collections.Generic;        
+using System.ComponentModel;             
+using System.Linq;                       
+using System.Text;                       
+using System.Threading.Tasks;            
+using System.Windows.Forms;              
+                                         
+namespace Oracle11g.Table                
+{                                        
+    class CHANNELS : DataService<CHANNELS>     
+    {                                            public CHANNELS() { }               
+        public string CHANNEL_ID { get; set; }
+        public string CHANNEL_DESC { get; set; }
+        public string CHANNEL_CLASS { get; set; }
+        public string CHANNEL_CLASS_ID { get; set; }
+        public string CHANNEL_TOTAL { get; set; }
+        public string CHANNEL_TOTAL_ID { get; set; }
+        public Nullable<DateTime> CREATE_DATE { get; set; }
+        public Nullable<DateTime> UPDATE_DATE { get; set; }
+                                         
+        public CHANNELS (string CHANNEL_ID
+, string CHANNEL_DESC
+, string CHANNEL_CLASS
+, string CHANNEL_CLASS_ID
+, string CHANNEL_TOTAL
+, string CHANNEL_TOTAL_ID
+, Nullable<DateTime> CREATE_DATE
+, Nullable<DateTime> UPDATE_DATE
+)
+        {                                
+            this.CHANNEL_ID = CHANNEL_ID;          
+            this.CHANNEL_DESC = CHANNEL_DESC;          
+            this.CHANNEL_CLASS = CHANNEL_CLASS;          
+            this.CHANNEL_CLASS_ID = CHANNEL_CLASS_ID;          
+            this.CHANNEL_TOTAL = CHANNEL_TOTAL;          
+            this.CHANNEL_TOTAL_ID = CHANNEL_TOTAL_ID;          
+            this.CREATE_DATE = CREATE_DATE;          
+            this.UPDATE_DATE = UPDATE_DATE;          
+        }                                
+        public CHANNELS(string[] splitresult)
+        {                                 
+            this.CHANNEL_ID = splitresult[0];  
+            this.CHANNEL_DESC = splitresult[1];  
+            this.CHANNEL_CLASS = splitresult[2];  
+            this.CHANNEL_CLASS_ID = splitresult[3];  
+            this.CHANNEL_TOTAL = splitresult[4];  
+            this.CHANNEL_TOTAL_ID = splitresult[5];  
+            if (splitresult[6] == "")
+            {
+                this.CREATE_DATE = null;            }
+            else
+            {
+                this.CREATE_DATE = Convert.ToDateTime(splitresult[6])            }
+            if (splitresult[7] == "")
+            {
+                this.UPDATE_DATE = null;            }
+            else
+            {
+                this.UPDATE_DATE = Convert.ToDateTime(splitresult[7])            }
+        }                                 
+        public void clear()               
+        {                                 
+            this.CHANNEL_ID = null;            
+            this.CHANNEL_DESC = null;            
+            this.CHANNEL_CLASS = null;            
+            this.CHANNEL_CLASS_ID = null;            
+            this.CHANNEL_TOTAL = null;            
+            this.CHANNEL_TOTAL_ID = null;            
+            this.CREATE_DATE = null;            
+            this.UPDATE_DATE = null;            
+        }                                 
+                                          
+    }                                     
+}                                         

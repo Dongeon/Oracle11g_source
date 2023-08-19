@@ -1,0 +1,97 @@
+using Oracle.ManagedDataAccess.Client;   
+using Oracle11g.Connection;              
+using System;                            
+using System.Collections.Generic;        
+using System.ComponentModel;             
+using System.Linq;                       
+using System.Text;                       
+using System.Threading.Tasks;            
+using System.Windows.Forms;              
+                                         
+namespace Oracle11g.Table                
+{                                        
+    class COUNTRIES : DataService<COUNTRIES>     
+    {                                            public COUNTRIES() { }               
+        public string COUNTRY_ID { get; set; }
+        public string COUNTRY_ISO_CODE { get; set; }
+        public string COUNTRY_NAME { get; set; }
+        public string COUNTRY_SUBREGION { get; set; }
+        public string COUNTRY_SUBREGION_ID { get; set; }
+        public string COUNTRY_REGION { get; set; }
+        public string COUNTRY_REGION_ID { get; set; }
+        public string COUNTRY_TOTAL { get; set; }
+        public string COUNTRY_TOTAL_ID { get; set; }
+        public string COUNTRY_NAME_HIST { get; set; }
+        public Nullable<DateTime> CREATE_DATE { get; set; }
+        public Nullable<DateTime> UPDATE_DATE { get; set; }
+                                         
+        public COUNTRIES (string COUNTRY_ID
+, string COUNTRY_ISO_CODE
+, string COUNTRY_NAME
+, string COUNTRY_SUBREGION
+, string COUNTRY_SUBREGION_ID
+, string COUNTRY_REGION
+, string COUNTRY_REGION_ID
+, string COUNTRY_TOTAL
+, string COUNTRY_TOTAL_ID
+, string COUNTRY_NAME_HIST
+, Nullable<DateTime> CREATE_DATE
+, Nullable<DateTime> UPDATE_DATE
+)
+        {                                
+            this.COUNTRY_ID = COUNTRY_ID;          
+            this.COUNTRY_ISO_CODE = COUNTRY_ISO_CODE;          
+            this.COUNTRY_NAME = COUNTRY_NAME;          
+            this.COUNTRY_SUBREGION = COUNTRY_SUBREGION;          
+            this.COUNTRY_SUBREGION_ID = COUNTRY_SUBREGION_ID;          
+            this.COUNTRY_REGION = COUNTRY_REGION;          
+            this.COUNTRY_REGION_ID = COUNTRY_REGION_ID;          
+            this.COUNTRY_TOTAL = COUNTRY_TOTAL;          
+            this.COUNTRY_TOTAL_ID = COUNTRY_TOTAL_ID;          
+            this.COUNTRY_NAME_HIST = COUNTRY_NAME_HIST;          
+            this.CREATE_DATE = CREATE_DATE;          
+            this.UPDATE_DATE = UPDATE_DATE;          
+        }                                
+        public COUNTRIES(string[] splitresult)
+        {                                 
+            this.COUNTRY_ID = splitresult[0];  
+            this.COUNTRY_ISO_CODE = splitresult[1];  
+            this.COUNTRY_NAME = splitresult[2];  
+            this.COUNTRY_SUBREGION = splitresult[3];  
+            this.COUNTRY_SUBREGION_ID = splitresult[4];  
+            this.COUNTRY_REGION = splitresult[5];  
+            this.COUNTRY_REGION_ID = splitresult[6];  
+            this.COUNTRY_TOTAL = splitresult[7];  
+            this.COUNTRY_TOTAL_ID = splitresult[8];  
+            this.COUNTRY_NAME_HIST = splitresult[9];  
+            if (splitresult[10] == "")
+            {
+                this.CREATE_DATE = null;            }
+            else
+            {
+                this.CREATE_DATE = Convert.ToDateTime(splitresult[10])            }
+            if (splitresult[11] == "")
+            {
+                this.UPDATE_DATE = null;            }
+            else
+            {
+                this.UPDATE_DATE = Convert.ToDateTime(splitresult[11])            }
+        }                                 
+        public void clear()               
+        {                                 
+            this.COUNTRY_ID = null;            
+            this.COUNTRY_ISO_CODE = null;            
+            this.COUNTRY_NAME = null;            
+            this.COUNTRY_SUBREGION = null;            
+            this.COUNTRY_SUBREGION_ID = null;            
+            this.COUNTRY_REGION = null;            
+            this.COUNTRY_REGION_ID = null;            
+            this.COUNTRY_TOTAL = null;            
+            this.COUNTRY_TOTAL_ID = null;            
+            this.COUNTRY_NAME_HIST = null;            
+            this.CREATE_DATE = null;            
+            this.UPDATE_DATE = null;            
+        }                                 
+                                          
+    }                                     
+}                                         

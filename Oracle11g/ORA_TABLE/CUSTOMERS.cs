@@ -1,0 +1,167 @@
+using Oracle.ManagedDataAccess.Client;   
+using Oracle11g.Connection;              
+using System;                            
+using System.Collections.Generic;        
+using System.ComponentModel;             
+using System.Linq;                       
+using System.Text;                       
+using System.Threading.Tasks;            
+using System.Windows.Forms;              
+                                         
+namespace Oracle11g.Table                
+{                                        
+    class CUSTOMERS : DataService<CUSTOMERS>     
+    {                                            public CUSTOMERS() { }               
+        public string CUST_ID { get; set; }
+        public string CUST_NAME { get; set; }
+        public string CUST_GENDER { get; set; }
+        public string CUST_YEAR_OF_BIRTH { get; set; }
+        public string CUST_MARITAL_STATUS { get; set; }
+        public string CUST_STREET_ADDRESS { get; set; }
+        public string CUST_POSTAL_CODE { get; set; }
+        public string CUST_CITY { get; set; }
+        public string CUST_CITY_ID { get; set; }
+        public string CUST_STATE_PROVINCE { get; set; }
+        public string CUST_STATE_PROVINCE_ID { get; set; }
+        public string COUNTRY_ID { get; set; }
+        public string CUST_MAIN_PHONE_NUMBER { get; set; }
+        public string CUST_INCOME_LEVEL { get; set; }
+        public string CUST_CREDIT_LIMIT { get; set; }
+        public string CUST_EMAIL { get; set; }
+        public string CUST_TOTAL { get; set; }
+        public string CUST_TOTAL_ID { get; set; }
+        public string CUST_SRC_ID { get; set; }
+        public Nullable<DateTime> CUST_EFF_FROM { get; set; }
+        public Nullable<DateTime> CUST_EFF_TO { get; set; }
+        public string CUST_VALID { get; set; }
+        public Nullable<DateTime> CREATE_DATE { get; set; }
+        public Nullable<DateTime> UPDATE_DATE { get; set; }
+                                         
+        public CUSTOMERS (string CUST_ID
+, string CUST_NAME
+, string CUST_GENDER
+, string CUST_YEAR_OF_BIRTH
+, string CUST_MARITAL_STATUS
+, string CUST_STREET_ADDRESS
+, string CUST_POSTAL_CODE
+, string CUST_CITY
+, string CUST_CITY_ID
+, string CUST_STATE_PROVINCE
+, string CUST_STATE_PROVINCE_ID
+, string COUNTRY_ID
+, string CUST_MAIN_PHONE_NUMBER
+, string CUST_INCOME_LEVEL
+, string CUST_CREDIT_LIMIT
+, string CUST_EMAIL
+, string CUST_TOTAL
+, string CUST_TOTAL_ID
+, string CUST_SRC_ID
+, Nullable<DateTime> CUST_EFF_FROM
+, Nullable<DateTime> CUST_EFF_TO
+, string CUST_VALID
+, Nullable<DateTime> CREATE_DATE
+, Nullable<DateTime> UPDATE_DATE
+)
+        {                                
+            this.CUST_ID = CUST_ID;          
+            this.CUST_NAME = CUST_NAME;          
+            this.CUST_GENDER = CUST_GENDER;          
+            this.CUST_YEAR_OF_BIRTH = CUST_YEAR_OF_BIRTH;          
+            this.CUST_MARITAL_STATUS = CUST_MARITAL_STATUS;          
+            this.CUST_STREET_ADDRESS = CUST_STREET_ADDRESS;          
+            this.CUST_POSTAL_CODE = CUST_POSTAL_CODE;          
+            this.CUST_CITY = CUST_CITY;          
+            this.CUST_CITY_ID = CUST_CITY_ID;          
+            this.CUST_STATE_PROVINCE = CUST_STATE_PROVINCE;          
+            this.CUST_STATE_PROVINCE_ID = CUST_STATE_PROVINCE_ID;          
+            this.COUNTRY_ID = COUNTRY_ID;          
+            this.CUST_MAIN_PHONE_NUMBER = CUST_MAIN_PHONE_NUMBER;          
+            this.CUST_INCOME_LEVEL = CUST_INCOME_LEVEL;          
+            this.CUST_CREDIT_LIMIT = CUST_CREDIT_LIMIT;          
+            this.CUST_EMAIL = CUST_EMAIL;          
+            this.CUST_TOTAL = CUST_TOTAL;          
+            this.CUST_TOTAL_ID = CUST_TOTAL_ID;          
+            this.CUST_SRC_ID = CUST_SRC_ID;          
+            this.CUST_EFF_FROM = CUST_EFF_FROM;          
+            this.CUST_EFF_TO = CUST_EFF_TO;          
+            this.CUST_VALID = CUST_VALID;          
+            this.CREATE_DATE = CREATE_DATE;          
+            this.UPDATE_DATE = UPDATE_DATE;          
+        }                                
+        public CUSTOMERS(string[] splitresult)
+        {                                 
+            this.CUST_ID = splitresult[0];  
+            this.CUST_NAME = splitresult[1];  
+            this.CUST_GENDER = splitresult[2];  
+            this.CUST_YEAR_OF_BIRTH = splitresult[3];  
+            this.CUST_MARITAL_STATUS = splitresult[4];  
+            this.CUST_STREET_ADDRESS = splitresult[5];  
+            this.CUST_POSTAL_CODE = splitresult[6];  
+            this.CUST_CITY = splitresult[7];  
+            this.CUST_CITY_ID = splitresult[8];  
+            this.CUST_STATE_PROVINCE = splitresult[9];  
+            this.CUST_STATE_PROVINCE_ID = splitresult[10];  
+            this.COUNTRY_ID = splitresult[11];  
+            this.CUST_MAIN_PHONE_NUMBER = splitresult[12];  
+            this.CUST_INCOME_LEVEL = splitresult[13];  
+            this.CUST_CREDIT_LIMIT = splitresult[14];  
+            this.CUST_EMAIL = splitresult[15];  
+            this.CUST_TOTAL = splitresult[16];  
+            this.CUST_TOTAL_ID = splitresult[17];  
+            this.CUST_SRC_ID = splitresult[18];  
+            if (splitresult[19] == "")
+            {
+                this.CUST_EFF_FROM = null;            }
+            else
+            {
+                this.CUST_EFF_FROM = Convert.ToDateTime(splitresult[19])            }
+            if (splitresult[20] == "")
+            {
+                this.CUST_EFF_TO = null;            }
+            else
+            {
+                this.CUST_EFF_TO = Convert.ToDateTime(splitresult[20])            }
+            this.CUST_VALID = splitresult[21];  
+            if (splitresult[22] == "")
+            {
+                this.CREATE_DATE = null;            }
+            else
+            {
+                this.CREATE_DATE = Convert.ToDateTime(splitresult[22])            }
+            if (splitresult[23] == "")
+            {
+                this.UPDATE_DATE = null;            }
+            else
+            {
+                this.UPDATE_DATE = Convert.ToDateTime(splitresult[23])            }
+        }                                 
+        public void clear()               
+        {                                 
+            this.CUST_ID = null;            
+            this.CUST_NAME = null;            
+            this.CUST_GENDER = null;            
+            this.CUST_YEAR_OF_BIRTH = null;            
+            this.CUST_MARITAL_STATUS = null;            
+            this.CUST_STREET_ADDRESS = null;            
+            this.CUST_POSTAL_CODE = null;            
+            this.CUST_CITY = null;            
+            this.CUST_CITY_ID = null;            
+            this.CUST_STATE_PROVINCE = null;            
+            this.CUST_STATE_PROVINCE_ID = null;            
+            this.COUNTRY_ID = null;            
+            this.CUST_MAIN_PHONE_NUMBER = null;            
+            this.CUST_INCOME_LEVEL = null;            
+            this.CUST_CREDIT_LIMIT = null;            
+            this.CUST_EMAIL = null;            
+            this.CUST_TOTAL = null;            
+            this.CUST_TOTAL_ID = null;            
+            this.CUST_SRC_ID = null;            
+            this.CUST_EFF_FROM = null;            
+            this.CUST_EFF_TO = null;            
+            this.CUST_VALID = null;            
+            this.CREATE_DATE = null;            
+            this.UPDATE_DATE = null;            
+        }                                 
+                                          
+    }                                     
+}                                         
