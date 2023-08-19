@@ -118,6 +118,7 @@
     <Content Include="Connection\DataList.xml">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="Version.txt" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ora_user\" />
