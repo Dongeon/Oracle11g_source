@@ -21,14 +21,32 @@ namespace VersionCounter
             }
             conn.DisconnectionOracle();
 
-            using (var repo = new Repository(@"D:\source\LibGit2Sharp"))
+            using (var repo = new Repository(@"C:\Users\admin\Source\Repos\Dongeon\Oracle11g_source"))
             {
-                Commit commit = repo.Lookup<Commit>("73b48894238c3e9c37f9f3a696bbd4bffcf45ce5");
+                Commit commit = repo.Head.Tip;
                 Console.WriteLine("Author: {0}", commit.Author.Name);
                 Console.WriteLine("Message: {0}", commit.MessageShort);
+
+                //-- get tree
+                foreach (TreeEntry treeEntry in commit.Tree)
+                {
+                    Console.WriteLine("Path:{0} - Type:{1}", treeEntry.Path, treeEntry.TargetType);
+                }
+
+                Console.WriteLine("SHA = " + commit.Sha);
+                Console.WriteLine("MessageShort = " + commit.MessageShort);
+                Console.WriteLine("Message = " + commit.Message);
+                Console.WriteLine("Author = " + commit.Author);
+                Console.WriteLine("Committer = " + commit.Committer);
+                Console.WriteLine("============================================================");
+                Console.WriteLine("id = " + commit.Id);
+                Console.WriteLine("message = " + commit.Message);
+                Console.WriteLine("Name = " + commit.Author.Name);
+                Console.WriteLine(commit.Tree.Select(t => t.Name).ToList());
             }
 
             Console.ReadKey();
+
         }
 
 
