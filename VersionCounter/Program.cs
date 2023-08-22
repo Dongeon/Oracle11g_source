@@ -1,4 +1,5 @@
 ﻿using LibGit2Sharp;
+using Oracle.ManagedDataAccess.Client;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -13,10 +14,14 @@ namespace VersionCounter
     {
         static void Main(string[] args)
         {
-
-
+            //-- 1. VERSION CONTROL 
             string version = Program.VersionControl();
-
+            Console.WriteLine("============================================================");
+            //-- 2. GET GIT COMMIT DATA - AFTER LAST BUILD
+            Program.libgit2SharpExample();
+            Console.WriteLine("============================================================");
+            //-- 3. VERSION DATA INSERT
+            //Program.oracleconn();
             Console.ReadKey();
 
         }
@@ -39,7 +44,7 @@ namespace VersionCounter
                 }
 
                 str = line.Split('.');
-                
+
                 str[0] = str[0] + ".";
                 str[1] = str[1] + ".";
                 int intBuild = int.Parse(str[2]);
@@ -62,47 +67,44 @@ namespace VersionCounter
             return newVersion;
         }
 
-        void libgit2SharpExample()
+        public static void libgit2SharpExample()
         {
+
+            //-- GIT REPO 설정
             using (var repo = new Repository(@"C:\Users\admin\Source\Repos\Dongeon\Oracle11g_source"))
             {
-                Commit commit = repo.Head.Tip;
-                Console.WriteLine("Author: {0}", commit.Author.Name);
-                Console.WriteLine("Message: {0}", commit.MessageShort);
-
-                //-- get tree
-                foreach (TreeEntry treeEntry in commit.Tree)
+                //-- GIT COMMITS LIST
+                var commits = repo.Head.Commits;
+                foreach (var comm in commits)
                 {
-                    Console.WriteLine("Path:{0} - Type:{1}", treeEntry.Path, treeEntry.TargetType);
+                    Console.WriteLine("============================================================");
+                    Console.WriteLine("id        = " + comm.Id);
+                    Console.WriteLine("message   = " + comm.Message);
+                    Console.WriteLine("Name      = " + comm.Author.Name);
+                    List<String> strname = comm.Tree.Select(t => t.Name).ToList();
+                    List<String> strpath = comm.Tree.Select(t => t.Path).ToList();
+
+                    Console.WriteLine("Files     = " + comm.Tree.Select(t => t.Name).ToList());
                 }
-
-                Console.WriteLine("SHA = " + commit.Sha);
-                Console.WriteLine("MessageShort = " + commit.MessageShort);
-                Console.WriteLine("Message = " + commit.Message);
-                Console.WriteLine("Author = " + commit.Author);
-                Console.WriteLine("Committer = " + commit.Committer);
-                Console.WriteLine("============================================================");
-                Console.WriteLine("id = " + commit.Id);
-                Console.WriteLine("message = " + commit.Message);
-                Console.WriteLine("Name = " + commit.Author.Name);
-                Console.WriteLine(commit.Tree.Select(t => t.Name).ToList());
-
-                Console.WriteLine("============================================================");
-
             }
         }
 
-        void oracleconn()
+        public static void oracleconn()
         {
-            //-- connect oracle
-            OracleControl conn = new OracleControl();
-            conn.ConnectionOracle();
-            List<string> query = conn.SelectQueryOracle("SELECT * FROM dept");
-            foreach (string item in query)
-            {
-                Console.WriteLine(item);
-            }
-            conn.DisconnectionOracle();
+            // 오라클 연결
+            OracleConnection conn = new OracleConnection(@"Data Source=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=localhost)(PORT=1521)))
+                                    (CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=orcl))); User Id = scott; Password = 1234;");
+            conn.Open();
+
+            // 명령 객체 생성
+            OracleCommand cmd = new OracleCommand();
+            cmd.Connection = conn;
+
+            // SQL문 지정 및 INSERT 실행
+            cmd.CommandText = "INSERT INTO DEPT (DEPTNO,DNAME,LOC) VALUES (31,'dong','eon')";
+            cmd.ExecuteNonQuery();
+
+            conn.Close();
         }
     }
 }
