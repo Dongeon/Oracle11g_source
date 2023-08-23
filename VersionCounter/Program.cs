@@ -1,6 +1,7 @@
 ﻿using LibGit2Sharp;
 using Oracle.ManagedDataAccess.Client;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -69,23 +70,50 @@ namespace VersionCounter
 
         public static void libgit2SharpExample()
         {
-
+            CommitFilter commitFilter = new CommitFilter(); 
             //-- GIT REPO 설정
+            //using (var repo = new Repository(@"C:\Users\admin\Source\Repos\ISIA"))
             using (var repo = new Repository(@"C:\Users\admin\Source\Repos\Dongeon\Oracle11g_source"))
             {
-                //-- GIT COMMITS LIST
-                var commits = repo.Head.Commits;
-                foreach (var comm in commits)
-                {
-                    Console.WriteLine("============================================================");
-                    Console.WriteLine("id        = " + comm.Id);
-                    Console.WriteLine("message   = " + comm.Message);
-                    Console.WriteLine("Name      = " + comm.Author.Name);
-                    List<String> strname = comm.Tree.Select(t => t.Name).ToList();
-                    List<String> strpath = comm.Tree.Select(t => t.Path).ToList();
 
-                    Console.WriteLine("Files     = " + comm.Tree.Select(t => t.Name).ToList());
-                }
+                ////-- GIT COMMITS LIST
+                //var commits = repo.Head.Commits;
+                //foreach (var comm in commits)
+                //{
+                //    Console.WriteLine("============================================================");
+                //    Console.WriteLine("id        = " + comm.Id);
+                //    Console.WriteLine("message   = " + comm.Message);
+                //    Console.WriteLine("Name      = " + comm.Author.Name);
+                //    List<String> strname = comm.Tree.Select(t => t.Name).ToList();
+                //    List<String> strpath = comm.Tree.Select(t => t.Path).ToList();
+
+                //    foreach(string str in strname) Console.Write(str + "/");
+                //    Console.WriteLine("============================================================");
+                //    foreach (string str in strpath) Console.Write(str + "/");
+                //    Console.WriteLine("============================================================");
+
+                //    Console.WriteLine("Files     = " + comm.Tree.Select(t => t.Name).ToList());
+                //}
+
+                //CommitFilter cf = new CommitFilter
+                //{
+                //    SortBy = CommitSortStrategies.Reverse | CommitSortStrategies.Time,
+                //    ExcludeReachableFrom = repo.Branches["master"].Tip,
+                //    IncludeReachableFrom = repo.Head.Tip
+                //};
+
+                //var results = repo.Commits.QueryBy(cf);
+
+                //foreach (var result in results)
+                //{
+                //    //Process commits here.
+                //    Console.WriteLine("Files     = ");
+                //}
+
+                //foreach(string str in repo.Index.)
+                //{
+
+                //}
             }
         }
 
